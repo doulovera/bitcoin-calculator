@@ -1,0 +1,23 @@
+.currency-card-item {
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+  margin: 16px 0;
+  padding: 0 8%;
+  background-color: var(--primary);
+  border-radius: 10px;
+}
+
+.currency-card__element {
+  display: flex;
+  align-items: center;
+}
+
+.currency-card__text {
+  margin: 0 10px;
+  font-size: 1.2rem;
+}
+
+.currency-card__text--symbol {
+  text-transform: uppercase;
+}

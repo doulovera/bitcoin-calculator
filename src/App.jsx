@@ -1,11 +1,19 @@
 import { useState } from "react";
 import { useGecko } from "./hooks/useGecko";
 import CurrencyCard from "./components/CurrencyCard";
+import CurrencyCalculator from "./components/CurrencyCalculator";
 import "./App.css";
 
 export default function App() {
   const { data, isLoading, reloadApi } = useGecko();
   const [isCurrencyUSD, setIsCurrencyUSD] = useState(true);
+
+  if (isLoading)
+    return (
+      <div className="App--loading">
+        <h1>Cargando...</h1>
+      </div>
+    );
 
   return (
     <div className="App">

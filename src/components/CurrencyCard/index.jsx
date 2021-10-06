@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import "./style.css";
 
-export default function CurrencyCard({ symbol, name, image, value, isUSD }) {
+export default function CurrencyCard({
+  symbol,
+  name,
+  image,
+  value,
+  isUSD,
+  isLoading,
+}) {
   const lang = navigator.language;
 
   const currencyFormatter = (value = "0") => {
@@ -23,7 +30,9 @@ export default function CurrencyCard({ symbol, name, image, value, isUSD }) {
       </div>
       <div className="currency-card__element currency__card-element--value">
         <h2 className="currency-card__text">
-          {isUSD
+          {isLoading
+            ? "XXXXXXXXXXX"
+            : isUSD
             ? currencyFormatter(value?.usd)
             : currencyFormatter(value?.pen)}
         </h2>

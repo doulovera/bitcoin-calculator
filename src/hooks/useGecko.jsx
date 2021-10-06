@@ -28,6 +28,7 @@ export function useGecko() {
 
   const reloadApi = () => {
     setReload(true);
+    setIsLoading(true);
     setTimeout(() => setReload(false), 10);
   };
 

@@ -8,7 +8,9 @@ export default function App() {
   const { data, isLoading, reloadApi } = useGecko();
   const [isCurrencyUSD, setIsCurrencyUSD] = useState(true);
 
-  if (isLoading)
+  console.log();
+
+  if (!data.name)
     return (
       <div className="App--loading">
         <h1>Cargando...</h1>
@@ -34,9 +36,11 @@ export default function App() {
 
       <div className="content">
         <section className="content__section">
-          <CurrencyCard {...data} isUSD={isCurrencyUSD} />
+          <CurrencyCard {...data} isUSD={isCurrencyUSD} isLoading={isLoading} />
         </section>
-        <section className="content__section"></section>
+        <section className="content__section">
+          {/* <CurrencyCalculator /> */}
+        </section>
       </div>
     </div>
   );

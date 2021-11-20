@@ -5,7 +5,7 @@ export default function CurrencyCard({
   symbol,
   name,
   image,
-  value,
+  price,
   isUSD,
   isLoading,
 }) {
@@ -30,11 +30,7 @@ export default function CurrencyCard({
       </div>
       <div className="currency-card__element currency__card-element--value">
         <h2 className="currency-card__text">
-          {isLoading
-            ? "XXXXXXXXXXX"
-            : isUSD
-            ? currencyFormatter(value?.usd)
-            : currencyFormatter(value?.pen)}
+          {isLoading ? "XXXXXXXXXXX" : currencyFormatter(price)}
         </h2>
       </div>
     </article>

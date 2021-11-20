@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { useGecko } from "./hooks/useGecko";
 import CurrencyCard from "./components/CurrencyCard";
-import CurrencyCalculator from "./components/CurrencyCalculator";
+import CurrencyCalculator from "./container/CurrencyCalculator";
 import "./App.css";
 
 export default function App() {
   const { data, isLoading, reloadApi } = useGecko();
   const [isCurrencyUSD, setIsCurrencyUSD] = useState(true);
 
-  console.log();
+  const price = isCurrencyUSD ? data.value?.usd : data.value?.pen;
 
   if (!data.name)
     return (
@@ -36,10 +36,15 @@ export default function App() {
 
       <div className="content">
         <section className="content__section">
-          <CurrencyCard {...data} isUSD={isCurrencyUSD} isLoading={isLoading} />
+          <CurrencyCard
+            {...data}
+            price={price}
+            isUSD={isCurrencyUSD}
+            isLoading={isLoading}
+          />
         </section>
         <section className="content__section">
-          {/* <CurrencyCalculator /> */}
+          <CurrencyCalculator price={price} isUSD={isCurrencyUSD} />
         </section>
       </div>
     </div>
